@@ -44,7 +44,7 @@ public class User {
 	private Timestamp createDate;
 	
 //	@ColumnDefault("'user'") // 문자라는 것을 알려주기 위해 내부에 'user'을 넣는다. => 이후에 set해주기로 함 @DynamicInsert하면 어노테이션 많아지니깐.
-//	private String role; // Enum을 사용하는 것이 좋다. ex) admin, user, manager => 타입이 String이기 때문에 오타날 수 있음.
+//	private String role; // Enum을 사용하는 것이 좋다. ex) admin, user, manager ... => 타입이 String이기 때문에 오타날 수 있음.
 // DB에는 RoleType이라는 자료형이 없기 때문에 @Enumerated(EnumType.STRING)을 추가해준다. 
 	@Enumerated(EnumType.STRING)
 	private RoleType role;
