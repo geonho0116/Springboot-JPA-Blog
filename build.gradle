@@ -22,7 +22,7 @@ dependencies {
 	//DB에서 JPA 사용을 위한 라이브러리 
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	//스프링 보안 관련
-	//implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
 	//웹 애플리케이션을 만드는데 필요한 요소들이 있다. 내장형 컨테이너로 톰캣을 기본탑재하고 있다.
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	//어노테이션을 사용한 getter/setter 등등 추가
@@ -37,8 +37,8 @@ dependencies {
 	
 	// 추가 라이브러리
 	implementation 'javax.servlet:jstl'											// JSTL
-	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'			// JSP 탬플릿 엔진
-	//implementation 'org.springframework.security:spring-security-taglibs'		// Security 태그 라이브러리
+	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'		// JSP 탬플릿 엔진
+	implementation 'org.springframework.security:spring-security-taglibs'		// Security 태그 라이브러리
 }
 
 test {

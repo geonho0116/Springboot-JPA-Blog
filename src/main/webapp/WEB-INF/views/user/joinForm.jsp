@@ -23,7 +23,7 @@
 	<button id="btn-save" class="btn btn-primary">회원가입</button>
 </div>
 
-<script src="/blog/js/user.js"></script>
+<script src="/js/user.js"></script>
 <!-- '/'하면 static을 찾아간다. -->
 
 
