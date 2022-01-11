@@ -1,7 +1,8 @@
 package com.cos.blog.repository;
 
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 
 import com.cos.blog.model.User;
 
@@ -9,8 +10,9 @@ import com.cos.blog.model.User;
 //빈으로 등록이 되나요? -> 자동으로 등록이 된다. 
 //->@Repository 생략가능.
 public interface UserRepository extends JpaRepository<User, Integer>{ //User테이블을 관리하고 PK는 integer형이야라는 뜻.
-	
-	
+	//SELECT * FROM user WHERE username=?;
+	//JPA 네이밍쿼리전략
+	Optional<User> findByUsername(String username);
 	
 	
 	
