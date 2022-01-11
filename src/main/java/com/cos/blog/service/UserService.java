@@ -20,9 +20,11 @@ public class UserService {
 		userRepository.save(user);
 	}
 	
-	@Transactional(readOnly = true)  // select인데 트랜잭션이 필요? 필요! select 시작~끝 동안에 정합성을 보장하기 위함.
-	public User 로그인(User user) {
-		return userRepository.findByUsernameAndPassword(user.getUsername(), user.getPassword());
-	}
+	/* spring security를 사용할 것이기 때문에 주석처리함
+	 * @Transactional(readOnly = true) // select인데 트랜잭션이 필요? 필요! select 시작~끝 동안에
+	 * 정합성을 보장하기 위함. public User 로그인(User user) { return
+	 * userRepository.findByUsernameAndPassword(user.getUsername(),
+	 * user.getPassword()); }
+	 */
 	
 }

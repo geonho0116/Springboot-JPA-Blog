@@ -4,10 +4,11 @@ let index = {
 			this.save();
 			console.log("save클릭");
 		});
-		$("#btn-login").on("click",()=>{ 
-			this.login();
-			console.log("save클릭");
-		});
+		// $("#btn-login").on("click",()=>{ 
+		// 	this.login();
+		// 	console.log("save클릭");
+		// });
+		// 스프링시큐리티쓸거라주석
 	},
 
 	save: function(){
@@ -25,7 +26,7 @@ let index = {
 		$.ajax({
 			//회원가입 수행 요청
 			type: "POST",
-			url: "/api/user",
+			url: "/auth/joinProc",
 			data: JSON.stringify(data), //http body 데이터의 타입(요청)
 			contentType: "application/json; charset=utf-8",
 			dataType: "json"//응답타입을 지정한다. default는 String인데 형태가 json이면 바꾼다.
@@ -41,29 +42,29 @@ let index = {
 		
 	},
 	
-	login: function(){
-		// alert('user의 save함수 호출됨.')
-		let data = {
-			username:$("#username").val(),
-			password:$("#password").val(),
-		};
+	// login: function(){
+	// 	// alert('user의 save함수 호출됨.')
+	// 	let data = {
+	// 		username:$("#username").val(),
+	// 		password:$("#password").val(),
+	// 	};
 
-		$.ajax({
-			//회원가입 수행 요청
-			type: "POST",
-			url: "/api/user/login",
-			data: JSON.stringify(data), //http body 데이터의 타입(요청)
-			contentType: "application/json; charset=utf-8",
-			dataType: "json"//응답타입을 지정한다. default는 String인데 형태가 json이면 바꾼다.
-		}).done(function(resp){
-			//성공시
-			alert("로그인이 완료되었습니다.");
-			location.href="/";
-		}).fail(function(error){		
-			//실패시
-			alert(JSON.stringify(error));
-		});
-	} ,
+	// 	$.ajax({
+	// 		//회원가입 수행 요청
+	// 		type: "POST",
+	// 		url: "/api/user/login",
+	// 		data: JSON.stringify(data), //http body 데이터의 타입(요청)
+	// 		contentType: "application/json; charset=utf-8",
+	// 		dataType: "json"//응답타입을 지정한다. default는 String인데 형태가 json이면 바꾼다.
+	// 	}).done(function(resp){
+	// 		//성공시
+	// 		alert("로그인이 완료되었습니다.");
+	// 		location.href="/";
+	// 	}).fail(function(error){		
+	// 		//실패시
+	// 		alert(JSON.stringify(error));
+	// 	});
+	// } ,
 }
 
 index.init();
