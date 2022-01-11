@@ -39,7 +39,7 @@ public class Board {
 	@Lob // 대용량 데이터를 위한 어노테이션
 	private String content; // 섬머노트 라이브러리를 사용할 예정이다. html태그가 섰여서 디자인됨 -> 용량이 커진다.
 	
-	@ColumnDefault("0") // 홑따옴표 없이 0을 넣는다.
+	//@ColumnDefault("0") // 홑따옴표 없이 0을 넣는다.
 	private int count; //조회수
 	
 	@JoinColumn(name="userId") //userId라는 필드가 생성되고
