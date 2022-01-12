@@ -10,7 +10,7 @@ import com.cos.blog.model.User;
 import com.cos.blog.repository.UserRepository;
 
 @Service //빈등록
-public class PrincipalDetailService implements UserDetailsService{
+public class PrincipalDetailService implements UserDetailsService{ //UsernamePasswordAuthenticationToken이 들어온다.
 
 	@Autowired
 	private UserRepository userRepository;

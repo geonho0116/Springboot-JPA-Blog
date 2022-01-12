@@ -6,13 +6,13 @@
 		alert("로그인이 된 사용자입니다.");
 	</script> -->
 	<sec:authentication property="principal" var="principal" />
-
+	<!-- 현재 로그인한 객체가 저장됨 -->
 </sec:authorize>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Bootstrap Example</title>
+<title>스프링부트 연습 게시판</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">

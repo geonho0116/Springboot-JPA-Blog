@@ -9,6 +9,11 @@ let index = {
 		// 	console.log("save클릭");
 		// });
 		// 스프링시큐리티쓸거라주석
+		
+		$("#btn-update").on("click",()=>{ //function(){}, () =>를 사용하는 이유는 this를 바인딩하기 위함이다. function을 사용하면 윈도우객체를 가리킨다.
+			this.update();
+			console.log("update클릭");
+		});
 	},
 
 	save: function(){
@@ -65,6 +70,34 @@ let index = {
 	// 		alert(JSON.stringify(error));
 	// 	});
 	// } ,
+	
+	update: function(){
+		
+		
+		let data = {
+			id: $("#id").val(),
+			username:$("#username").val(),
+			password:$("#password").val(),
+			email:$("#email").val(),
+		};
+
+		$.ajax({
+			type: "PUT",
+			url: "/user",
+			data: JSON.stringify(data), //http body 데이터의 타입(요청)
+			contentType: "application/json; charset=utf-8",
+			dataType: "json"//응답타입을 지정한다. default는 String인데 형태가 json이면 바꾼다.
+		}).done(function(resp){
+			//성공시
+			alert("회원수정이 완료되었습니다.");
+			console.log(resp);
+			location.href="/";
+		}).fail(function(error){		
+			//실패시
+			alert(JSON.stringify(error));
+		}); 
+		
+	},
 }
 
 index.init();
