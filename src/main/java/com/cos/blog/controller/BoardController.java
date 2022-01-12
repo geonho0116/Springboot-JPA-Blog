@@ -13,27 +13,34 @@ import com.cos.blog.service.BoardService;
 
 @Controller
 public class BoardController {
-	
+
 	@Autowired
 	private BoardService boardService;
-	
+
 	@GetMapping("/")
 //	public String index(@AuthenticationPrincipal PrincipalDetail principal) { //컨트롤러에서 세션을 어떻게 찾지? jsp 에서는  jstl로 찾았는데
-	public String index(Model model, @PageableDefault(size = 3,sort = "id",direction = Direction.DESC) Pageable pageable) {
+	public String index(Model model,
+			@PageableDefault(size = 3, sort = "id", direction = Direction.DESC) Pageable pageable) {
 		model.addAttribute("boards", boardService.글목록(pageable));
 		return "index"; // viewResolver에 의해 /WEB-INF/views/index.jsp로 이동
 	}
-	
+
 	// USER 권한 필요
 	@GetMapping("/board/saveForm")
 	public String savaForm() {
 		return "board/saveForm";
 	}
-	
+
 	@GetMapping("/board/{id}")
 	public String findById(@PathVariable int id,Model model) {
-		model.addAttribute(boardService.글상세보기(id));
-		return "board/detail";
-		
+		model.addAttribute("board",boardService.글상세보기(id));
+		return "board/detail";	
+	}
+	
+
+	@GetMapping("/board/{id}/updateForm")
+	public String updateForm(@PathVariable int id, Model model) {
+		model.addAttribute("board", boardService.글상세보기(id)); //글상세보기 재활용
+		return "/board/updateForm";
 	}
 }
