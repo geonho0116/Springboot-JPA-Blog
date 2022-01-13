@@ -23,6 +23,13 @@ public class UserService {
 	@Autowired
 	private BCryptPasswordEncoder encoder;
 
+	@Transactional (readOnly = true)
+	public User 회원찾기(String username) {
+		User user = userRepository.findByUsername(username).orElseGet(()->{
+			return new User();
+		});
+		return user;
+	}
 	
 	@Transactional //하나의 트랜잭션으로 묶여서 실행된다. 실행완료 -> commit, 실패 -> rollback
 	public void 회원가입(User user) {
@@ -40,12 +47,15 @@ public class UserService {
 			return new IllegalArgumentException("회원 찾기 실패: 해당하는 아이디가 없습니다.");
 		});
 		
-		String rawPassword = requestUser. getPassword(); //변경할 비밀번호 원문
-		String encPassword = encoder.encode(rawPassword); //변경할 비밀번호 해쉬
-		user.setPassword(encPassword);
-		user.setEmail(requestUser.getEmail());
-		//서비스 종료시 트랜잭션이 종료되고 그때 영속성컨텍스트의 객체가 DB로 자동으로 커밋된다.
-
+		//카카오사용자인지 validation체크
+		if(user.getOauth()==null || user.getOauth().equals("")) {
+			String rawPassword = requestUser. getPassword(); //변경할 비밀번호 원문
+			String encPassword = encoder.encode(rawPassword); //변경할 비밀번호 해쉬
+			user.setPassword(encPassword);
+			user.setEmail(requestUser.getEmail());
+			//서비스 종료시 트랜잭션이 종료되고 그때 영속성컨텍스트의 객체가 DB로 자동으로 커밋된다.
+		}
+		
 	}
 	/* spring security를 사용할 것이기 때문에 주석처리함
 	 * @Transactional(readOnly = true) // select인데 트랜잭션이 필요? 필요! select 시작~끝 동안에
