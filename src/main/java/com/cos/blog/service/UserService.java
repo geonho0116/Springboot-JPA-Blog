@@ -32,12 +32,19 @@ public class UserService {
 	}
 	
 	@Transactional //하나의 트랜잭션으로 묶여서 실행된다. 실행완료 -> commit, 실패 -> rollback
-	public void 회원가입(User user) {
-		String rawPassword = user. getPassword(); //원문
-		String encPassword = encoder.encode(rawPassword); //해쉬
-		user.setPassword(encPassword);
-		user.setRole(RoleType.USER);
-		userRepository.save(user);
+	public int 회원가입(User user) {
+		try{
+			userRepository.findByUsername(user.getUsername()).get();
+			return -1;
+		}
+		catch (Exception e) {
+			String rawPassword = user. getPassword(); //원문
+			String encPassword = encoder.encode(rawPassword); //해쉬
+			user.setPassword(encPassword);
+			user.setRole(RoleType.USER);
+			userRepository.save(user);
+			return 1; //성공
+		}
 	}
 	
 	@Transactional //하나의 트랜잭션으로 묶여서 실행된다. 실행완료 -> commit, 실패 -> rollback
@@ -46,7 +53,7 @@ public class UserService {
 		User user = userRepository.findById(requestUser.getId()).orElseThrow(()->{
 			return new IllegalArgumentException("회원 찾기 실패: 해당하는 아이디가 없습니다.");
 		});
-		
+		 
 		//카카오사용자인지 validation체크
 		if(user.getOauth()==null || user.getOauth().equals("")) {
 			String rawPassword = requestUser. getPassword(); //변경할 비밀번호 원문

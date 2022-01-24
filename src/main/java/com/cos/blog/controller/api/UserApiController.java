@@ -45,13 +45,28 @@ public class UserApiController {
 
 	@PostMapping("/auth/joinProc") // json -> java obj
 	public ResponseDto<Integer> save(@RequestBody User user) {
+		String uid = user.getUsername();
+		String pwd = user.getPassword();
+		String uemail = user.getEmail();
+		if(uid==null || pwd==null || uemail==null || uid.equals("") || pwd.equals("") || uemail.equals("")) {
+			return new ResponseDto<Integer>(HttpStatus.INTERNAL_SERVER_ERROR.value(), -2);
+		}
 		System.out.println("UserApiController : save 호출됨");
-		userService.회원가입(user);
+		int result = userService.회원가입(user);
+		if(result==-1) {
+			return new ResponseDto<Integer>(HttpStatus.INTERNAL_SERVER_ERROR.value(), -1); 
+		}
 		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1); // ResponseEntity느낌
 	}
 
 	@PutMapping("/user") // 회원정보수정
 	public ResponseDto<Integer> update(@RequestBody User user) {
+		String uid = user.getUsername();
+		String pwd = user.getPassword();
+		String uemail = user.getEmail();
+		if(uid==null || pwd==null || uemail==null || uid.equals("") || pwd.equals("") || uemail.equals("")) {
+			return new ResponseDto<Integer>(HttpStatus.INTERNAL_SERVER_ERROR.value(), -2);
+		}
 		userService.회원수정(user);
 		// 여기는 트랜잭션이 종료되기 때문에 DB의 값은 변경이 됐다.
 		// 하지만 세션값은 변경되지 않은 상태이기 때문에 로그아웃을 하고 다시 들어가야 회원정보가 수정된 것을 볼 수 있다.

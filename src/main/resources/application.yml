@@ -18,7 +18,7 @@ spring:
     url: jdbc:mysql://localhost:3307/blog?serverTimezone=Asia/Seoul
     username: geonho
     password: planty
-    
+     
   jpa:
     open-in-view: true #default가 true
     #OSIV를 설정해서 lazy loading. 영속 프록시 객체를 프레젠테이션계층까지 가져간다. -> 호출하면 프록시객체가 실제객체로 변경되고 select만 가능하다.

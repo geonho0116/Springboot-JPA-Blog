@@ -4,29 +4,27 @@
 	<form>
 		<input type="hidden" id="id" value="${principal.user.id }" />
 		<div class="form-group">
-			<label for="username">Username:</label> <input type="text" value="${principal.user.username }" class="form-control" placeholder="Enter username" id="username" readonly>
+			<label for="username">이름:</label> <input type="text" value="${principal.user.username }" class="form-control" placeholder="이름을 입력하세요" id="username" readonly>
 		</div>
 		<c:if test="${empty principal.user.oauth }">
 			<div class="form-group">
-				<label for="password">Password:</label> <input type="password" class="form-control" placeholder="Enter password" id="password">
+				<label for="password">수정할 비밀번호:</label> <input type="password" class="form-control" placeholder="비밀번호를 입력하세요" id="password">
 			</div>
 		</c:if>
 		<c:choose>
 			<c:when test="${empty principal.user.oauth }">
 				<div class="form-group">
-					<label for="email">Email:</label> <input type="email" value="${principal.user.email }" class="form-control" placeholder="Enter email" id="email">
+					<label for="email">수정할 이메일:</label> <input type="email" value="${principal.user.email }" class="form-control" placeholder="이메일을 입력하세요" id="email">
 				</div>
 			</c:when>
 			<c:otherwise>
 				<div class="form-group">
-					<label for="email">Email:</label> <input type="email" value="${principal.user.email }" class="form-control" placeholder="Enter email" id="email" readonly>
+					<label for="email">이메일:</label> <input type="email" value="${principal.user.email }" class="form-control" placeholder="Enter email" id="email" readonly>
 				</div>
 			</c:otherwise>
 		</c:choose>
-
-
 	</form>
-	<button id="btn-update" class="btn btn-primary">회원정보수정</button>
+	<c:if test="${empty principal.user.oauth }"><button id="btn-update" class="btn btn-primary">회원정보수정</button></c:if>
 </div>
 
 <script src="/js/user.js"></script>

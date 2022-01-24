@@ -26,7 +26,7 @@
 <body>
 
 	<nav class="navbar navbar-expand-md bg-dark navbar-dark">
-		<a class="navbar-brand" href="/">Blog</a>
+		<a class="navbar-brand" href="/">게시판</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
 			<span class="navbar-toggler-icon"></span>
 		</button>
@@ -52,3 +52,4 @@
 		</div>
 	</nav>
 	<br>
+<div id="body-wrapper">

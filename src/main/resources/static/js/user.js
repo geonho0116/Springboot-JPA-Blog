@@ -24,8 +24,6 @@ let index = {
 			email:$("#email").val(),
 		};
 
-		// console.log(data);
-
 		//ajax호출시 default가 비동기 호출
 		//ajax통신을 이용해서 3개의 데이터를 json으로 변경하여 insert요청하기
 		$.ajax({
@@ -37,9 +35,20 @@ let index = {
 			dataType: "json"//응답타입을 지정한다. default는 String인데 형태가 json이면 바꾼다.
 		}).done(function(resp){
 			//성공시
-			alert("회원가입이 완료되었습니다.");
-			console.log(resp);
-			location.href="/";
+			if(resp.status==200){
+				alert("회원가입이 완료되었습니다.");
+				console.log(resp);
+				location.href="/auth/loginForm";
+			}
+			else if(resp.data==-1){
+				alert("이미 존재하는 username입니다.");
+				console.log(resp);
+			}
+			else if(resp.data==-2){
+				alert("모든 정보를 입력해주세요!");
+				console.log(resp);
+				
+			}
 		}).fail(function(error){		
 			//실패시
 			alert(JSON.stringify(error));
@@ -72,8 +81,6 @@ let index = {
 	// } ,
 	
 	update: function(){
-		
-		
 		let data = {
 			id: $("#id").val(),
 			username:$("#username").val(),
@@ -89,9 +96,15 @@ let index = {
 			dataType: "json"//응답타입을 지정한다. default는 String인데 형태가 json이면 바꾼다.
 		}).done(function(resp){
 			//성공시
-			alert("회원수정이 완료되었습니다.");
-			console.log(resp);
-			location.href="/";
+			if(resp.status==200){
+				alert("회원수정이 완료되었습니다.");
+				console.log(resp);
+				location.href="/";
+			}
+			else if(resp.data==-2){
+				alert("모든 정보를 입력해주세요!");
+				console.log(resp);
+			}
 		}).fail(function(error){		
 			//실패시
 			alert(JSON.stringify(error));

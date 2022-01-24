@@ -3,10 +3,10 @@
 <div class="container">
 	<form>
 		<div class="form-group">
-			<label for="title">Title:</label> <input type="text" class="form-control" placeholder="Enter title" id="title">
+			<label for="title">제목:</label> <input type="text" class="form-control" placeholder="제목을 입력하세요"  id="title">
 		</div>
 		<div class="form-group">
-			<label for="content">Content:</label>
+			<label for="content">내용:</label>
 			<textarea class="form-control summernote" rows="5" id="content"></textarea>
 		</div>
 	</form>

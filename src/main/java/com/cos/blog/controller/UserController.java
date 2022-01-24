@@ -42,7 +42,7 @@ public class UserController {
 
 	@Autowired
 	private UserService userService;
-
+	
 	@GetMapping("/auth/joinForm")
 	public String joinForm() {
 		return "user/joinForm";
@@ -53,6 +53,11 @@ public class UserController {
 		return "user/loginForm";
 	}
 
+	@GetMapping("user/updateForm")
+	public String updateForm() {
+		return "user/updateForm";
+	}
+	
 	@GetMapping("/auth/kakao/callback")
 	public String kakaoCallback(String code) {
 		// post방식으로 key-value 데이터를 카카오쪽으로 요청해야한다.
@@ -66,6 +71,7 @@ public class UserController {
 		params.add("grant_type", "authorization_code");
 		params.add("client_id", "bc4856a1bacc998365f1426d964fc03e"); // 날코딩 ㄴㄴ 변수화 후 사용해야해 나중엔
 		params.add("redirect_uri", "http://localhost:8000/auth/kakao/callback");
+		//params.add("redirect_uri", "http://222.232.53.224/auth/kakao/callback"); //서버용
 		params.add("code", code);
 
 		// 헤더와 바디를 하나의 오브젝트에 담는다. 밑에 exchange라는 메서드가 HttpEntity를 받도록 되어있기 때문에
@@ -126,7 +132,7 @@ public class UserController {
 				.password(kakaokey)
 				.email(kakaoProfile.getKakao_account().getEmail())
 				.oauth("kakao")
-				.build();
+ 				.build();
 
 		// 가입자(이미 가입한 사람) 비가입자 체크해서 처리
 		User originUser = userService.회원찾기(kakaoUser.getUsername());
@@ -142,8 +148,4 @@ public class UserController {
 		return "redirect:/";
 	}
 
-	@GetMapping("user/updateForm")
-	public String updateForm() {
-		return "user/updateForm";
-	}
 }

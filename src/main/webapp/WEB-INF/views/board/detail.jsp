@@ -1,15 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ include file="../layout/header.jsp"%>
 <div class="container">
 
-	<button class="btn btn-secondary" onclick="history.back()">돌아가기</button>
+	<button class="btn btn-success" onclick="history.back()">뒤로</button>
 	<c:if test="${board.user.id == principal.user.id }">
 		<a href="/board/${board.id}/updateForm" class="btn btn-warning">수정</a>
 		<button id="btn-delete" class="btn btn-danger">삭제</button>
 	</c:if>
 	<br /> <br />
 	<div>
-		글번호 : <span id="id"><i>${board.id} </i></span> 작성자 : <span><i>${board.user.username } </i></span>
+		글번호 : <span id="id"><i>${board.id} </i></span> 
+		작성자 : <span><i>${board.user.username } </i></span> 
+		조회수 : <span><i>${board.count } </i></span>
+		작성일자 : <span><i><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${board.createDate }" /> </i></span>
 		<div>
 			<br />
 			<h3>${board.title }</h3>
@@ -19,6 +23,48 @@
 			<div>${board.content }</div>
 		</div>
 		<hr />
+	</div>
+	<div class="card">
+		<form>
+			<input type="hidden" id="userId" value="${principal.user.id }" /> <input type="hidden" id="boardId" value="${board.id }" />
+			<div class="card-body">
+				<textarea id="reply-content" class="form-control" rows="1"></textarea>
+			</div>
+			<div class="card-footer">
+				<button type="button" id="btn-reply-save" class="btn btn-primary">댓글등록</button>
+			</div>
+		</form>
+	</div>
+	<br />
+
+	<div class="card">
+		<div class="card-header">댓글</div>
+		<ul id="reply-box" class="list-group">
+			<c:forEach var="reply" items="${board.replys }">
+				<li id="reply-${reply.id}" class="list-group-item d-flex justify-content-between">
+					<div>${reply.content }</div>
+					<div class="d-flex ">
+						<div class="font-italic">작성자 : ${reply.user.username } &nbsp; 작성일자 : <fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${reply.createDate }" />&nbsp; </div>
+						<c:if test="${reply.user.id == principal.user.id }">
+							<button onClick="index.replyDelete(${board.id},${reply.id })" class="badge">삭제</button>
+						</c:if>
+						<button onClick="index.commentSave(${board.id},${reply.id })" class="badge">답글</button>
+					</div>
+				</li>
+				<c:forEach var="comment" items="${reply.comments}">
+					<li id="comment-${comment.id}"  class="list-group-item d-flex justify-content-between"  >
+						<div>┗ ${comment.content }</div>
+						<div class="d-flex ">
+							<div class="font-italic">작성자 : ${comment.user.username } &nbsp; 작성일자 : <fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${comment.createDate }" />&nbsp; </div>
+							<c:if test="${comment.user.id == principal.user.id }">
+								<button onClick="index.commentDelete(${board.id},${reply.id},${comment.id})" class="badge">삭제</button>
+							</c:if>
+						</div>
+					</li>
+				</c:forEach>
+			</c:forEach>
+
+		</ul>
 	</div>
 </div>
 <script src="/js/board.js"></script>
