@@ -23,6 +23,7 @@
 
 Java, MVC, Spring Boot, Spring Security, JPA, JSP, HTML, CSS, BOOTSTRAP, JS, Kakao Login API
 
-4) **성과**
+
+**4) 성과**
 
 스프링 부트를 이용한 웹 개발, CRUD, 로그인 구현, MVC패턴의 적용, 테스트 코드 구현, JPA의 개념 및 구현에 대해 학습할 수 있었습니다.
