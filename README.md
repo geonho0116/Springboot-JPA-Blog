@@ -7,16 +7,17 @@
 **2) 설명**
 
 - 회원가입, 로그인, 카카오 로그인
+![Untitled](https://user-images.githubusercontent.com/50412072/153789256-e2ea0da3-f923-495b-86b1-6a788ef0bc67.png)
 
-![Untitled](%E1%84%87%E1%85%B3%E1%86%AF%E1%84%85%E1%85%A9%E1%84%80%E1%85%B3%20%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A6%E1%86%A8%E1%84%90%E1%85%B3(%E1%84%80%E1%85%A2%E1%84%8B%E1%85%B5%E1%86%AB)%206cb12a36efec40fa8c3099702cdbdea5/Untitled.png)
 
 - 글 작성, 삭제, 수정
+![Untitled 1](https://user-images.githubusercontent.com/50412072/153789254-08ef462c-cae7-4f70-915b-7f939391ad99.png)
 
-![Untitled](%E1%84%87%E1%85%B3%E1%86%AF%E1%84%85%E1%85%A9%E1%84%80%E1%85%B3%20%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A6%E1%86%A8%E1%84%90%E1%85%B3(%E1%84%80%E1%85%A2%E1%84%8B%E1%85%B5%E1%86%AB)%206cb12a36efec40fa8c3099702cdbdea5/Untitled%201.png)
+
 
 - 댓글 작성, 삭제, 수정, 대댓글 작성, 삭제 수정
+![Untitled 2](https://user-images.githubusercontent.com/50412072/153789244-f88eec18-5220-4b7a-85b5-d5b102d22e87.png)
 
-![Untitled](%E1%84%87%E1%85%B3%E1%86%AF%E1%84%85%E1%85%A9%E1%84%80%E1%85%B3%20%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A6%E1%86%A8%E1%84%90%E1%85%B3(%E1%84%80%E1%85%A2%E1%84%8B%E1%85%B5%E1%86%AB)%206cb12a36efec40fa8c3099702cdbdea5/Untitled%202.png)
 
 **3) 기술 스택**
 
